@@ -1,0 +1,92 @@
+[
+  {
+    "time": "2026-04-11T18:35:39",
+    "event": "Surgery type selected",
+    "value": "Cholecystectomy"
+  },
+  {
+    "time": "2026-04-11T18:35:39",
+    "event": "Surgeon Name",
+    "value": "Dr.Merai ai"
+  },
+  {
+    "time": "2026-04-11T18:35:40",
+    "event": "Patient Info",
+    "value": "Name: , Age: 0, BMI: 0"
+  },
+  {
+    "time": "2026-04-11T18:35:42",
+    "event": "Surgery started",
+    "value": "2026-04-11 18:35:42"
+  },
+  {
+    "time": "2026-04-11T18:35:45",
+    "event": "Clutch Pedal Pressed",
+    "value": "1"
+  },
+  {
+    "time": "2026-04-11T18:35:48",
+    "event": "SecondaryRight Instrument Name",
+    "value": "Long_Tip_Forceps"
+  },
+  {
+    "time": "2026-04-11T18:35:48",
+    "event": "SecondaryRight Instrument ID",
+    "value": "19"
+  },
+  {
+    "time": "2026-04-11T18:35:52",
+    "event": "SecondaryRight Instrument removed",
+    "value": ""
+  },
+  {
+    "time": "2026-04-11T18:35:54",
+    "event": "Clutch Pedal Pressed",
+    "value": "2"
+  },
+  {
+    "time": "2026-04-11T18:35:56",
+    "event": "SecondaryRight Instrument Name",
+    "value": "Black_Diamond_Micro_Forceps"
+  },
+  {
+    "time": "2026-04-11T18:35:56",
+    "event": "SecondaryRight Instrument ID",
+    "value": "29"
+  },
+  {
+    "time": "2026-04-11T18:35:59",
+    "event": "SecondaryRight Instrument removed",
+    "value": ""
+  },
+  {
+    "time": "2026-04-11T18:36:01",
+    "event": "SecondaryRight Instrument Name",
+    "value": "Seal_And_Cut"
+  },
+  {
+    "time": "2026-04-11T18:36:01",
+    "event": "SecondaryRight Instrument ID",
+    "value": "17"
+  },
+  {
+    "time": "2026-04-11T18:36:03",
+    "event": "SecondaryRight Instrument removed",
+    "value": ""
+  },
+  {
+    "time": "2026-04-11T18:36:03",
+    "event": "Surgery stopped",
+    "value": "2026-04-11 18:36:03"
+  },
+  {
+    "time": "2026-04-11T18:36:03",
+    "event": "Surgery duration",
+    "value": "00:00:21"
+  },
+  {
+    "time": "2026-04-11T18:36:05",
+    "event": "Log file ended",
+    "value": "Now"
+  }
+]

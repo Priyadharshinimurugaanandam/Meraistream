@@ -1,0 +1,7 @@
+{
+  "css.validate": false,
+  "less.validate": false,
+  "scss.validate": false,
+  "css.customData": [],
+  "python-envs.defaultEnvManager": "ms-python.python:pyenv"
+}

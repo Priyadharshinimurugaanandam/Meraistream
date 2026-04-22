@@ -11,6 +11,7 @@ import ProceduresPage   from './components/surgeon/ProceduresPage'
 import SharedWithMePage from './components/surgeon/SharedWithMePage'
 import VideoDetailPage  from './components/common/VideoDetailPage'
 import CalendarPage     from './components/common/CalendarPage'
+import TrainingPage     from './components/common/TrainingPage'
 
 const ProtectedRoute = ({ children }) => {
   const { user } = useAuth()
@@ -23,10 +24,7 @@ export default function App() {
 
   return (
     <Routes>
-      <Route
-        path="/login"
-        element={user ? <Navigate to="/dashboard" replace /> : <LoginPage />}
-      />
+      <Route path="/login" element={user ? <Navigate to="/dashboard" replace /> : <LoginPage />} />
 
       <Route path="/dashboard" element={
         <ProtectedRoute>
@@ -34,33 +32,15 @@ export default function App() {
         </ProtectedRoute>
       } />
 
-      <Route path="/upload" element={
-        <ProtectedRoute><UploadPage /></ProtectedRoute>
-      } />
-      <Route path="/surgeries" element={
-        <ProtectedRoute><SurgeonPage /></ProtectedRoute>
-      } />
-      <Route path="/hospitals" element={
-        <ProtectedRoute><HospitalPage /></ProtectedRoute>
-      } />
-
-      <Route path="/my-videos" element={
-        <ProtectedRoute><MyVideosPage /></ProtectedRoute>
-      } />
-      <Route path="/procedures" element={
-        <ProtectedRoute><ProceduresPage /></ProtectedRoute>
-      } />
-      <Route path="/shared" element={
-        <ProtectedRoute><SharedWithMePage /></ProtectedRoute>
-      } />
-
-      <Route path="/video/:id" element={
-        <ProtectedRoute><VideoDetailPage /></ProtectedRoute>
-      } />
-
-      <Route path="/calendar" element={
-        <ProtectedRoute><CalendarPage /></ProtectedRoute>
-      } />
+      <Route path="/upload"     element={<ProtectedRoute><UploadPage /></ProtectedRoute>} />
+      <Route path="/surgeries"  element={<ProtectedRoute><SurgeonPage /></ProtectedRoute>} />
+      <Route path="/hospitals"  element={<ProtectedRoute><HospitalPage /></ProtectedRoute>} />
+      <Route path="/my-videos"  element={<ProtectedRoute><MyVideosPage /></ProtectedRoute>} />
+      <Route path="/procedures" element={<ProtectedRoute><ProceduresPage /></ProtectedRoute>} />
+      <Route path="/shared"     element={<ProtectedRoute><SharedWithMePage /></ProtectedRoute>} />
+      <Route path="/video/:id"  element={<ProtectedRoute><VideoDetailPage /></ProtectedRoute>} />
+      <Route path="/calendar"   element={<ProtectedRoute><CalendarPage /></ProtectedRoute>} />
+      <Route path="/training"   element={<ProtectedRoute><TrainingPage /></ProtectedRoute>} />
 
       <Route path="*" element={<Navigate to={user ? '/dashboard' : '/login'} replace />} />
     </Routes>

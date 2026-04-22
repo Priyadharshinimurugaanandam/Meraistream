@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { useAuth } from '../../context/AuthContext'
 
-// ─── Icons ────────────────────────────────────────────────────────────────────
 const HomeIcon = () => (
   <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
     <path strokeLinecap="round" strokeLinejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
@@ -28,26 +27,14 @@ const SharedIcon = () => (
     <path strokeLinecap="round" strokeLinejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
   </svg>
 )
+const CalendarIcon = () => (
+  <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+  </svg>
+)
 const LogoutIcon = () => (
   <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
     <path strokeLinecap="round" strokeLinejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
-  </svg>
-)
-const DownloadIcon = () => (
-  <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-    <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-  </svg>
-)
-const MobileAppIcon = () => (
-  <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="white" strokeWidth={1.8}>
-    <rect x="7" y="2" width="10" height="20" rx="2" strokeLinecap="round" strokeLinejoin="round" />
-    <path strokeLinecap="round" strokeLinejoin="round" d="M11 18h2" />
-  </svg>
-)
-const CollapseIcon = ({ collapsed }) => (
-  <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-    <path strokeLinecap="round" strokeLinejoin="round"
-      d={collapsed ? "M9 5l7 7-7 7" : "M15 19l-7-7 7-7"} />
   </svg>
 )
 const LogoMark = ({ size = 32 }) => (
@@ -57,11 +44,11 @@ const LogoMark = ({ size = 32 }) => (
   </svg>
 )
 
-// ─── Nav configs ──────────────────────────────────────────────────────────────
 const serviceNav = [
-  { label: 'Home',     path: '/dashboard',  icon: HomeIcon     },
-  { label: 'Surgeon',  path: '/surgeries',  icon: SurgeryIcon  },
-  { label: 'Hospital', path: '/hospitals',  icon: HospitalIcon },
+  { label: 'Home',     path: '/dashboard', icon: HomeIcon     },
+  { label: 'Surgeon',  path: '/surgeries', icon: SurgeryIcon  },
+  { label: 'Hospital', path: '/hospitals', icon: HospitalIcon },
+  { label: 'Calendar', path: '/calendar',  icon: CalendarIcon },
 ]
 
 const surgeonNav = [
@@ -69,9 +56,9 @@ const surgeonNav = [
   { label: 'My Videos',      path: '/my-videos',  icon: SurgeryIcon   },
   { label: 'Procedures',     path: '/procedures', icon: ProcedureIcon },
   { label: 'Shared with Me', path: '/shared',     icon: SharedIcon    },
+  { label: 'Calendar',       path: '/calendar',   icon: CalendarIcon  },
 ]
 
-// ─── NavButton — defined OUTSIDE Sidebar so it's never recreated ──────────────
 const NavButton = ({ label, path, icon: Icon, collapsed, navigate, currentPath }) => {
   const isActive = currentPath === path
   return (
@@ -89,40 +76,25 @@ const NavButton = ({ label, path, icon: Icon, collapsed, navigate, currentPath }
         backgroundColor: isActive ? '#e6f7f6' : 'transparent',
         transition: 'all 0.15s ease',
       }}
-      onMouseEnter={e => {
-        if (!isActive) {
-          e.currentTarget.style.backgroundColor = '#f0fafa'
-          e.currentTarget.style.color = '#00938e'
-        }
-      }}
-      onMouseLeave={e => {
-        if (!isActive) {
-          e.currentTarget.style.backgroundColor = 'transparent'
-          e.currentTarget.style.color = '#6b7280'
-        }
-      }}
+      onMouseEnter={e => { if (!isActive) { e.currentTarget.style.backgroundColor = '#f0fafa'; e.currentTarget.style.color = '#00938e' } }}
+      onMouseLeave={e => { if (!isActive) { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = '#6b7280' } }}
     >
-      <span style={{ flexShrink: 0, color: isActive ? '#00938e' : '#9ca3af' }}>
-        <Icon />
-      </span>
+      <span style={{ flexShrink: 0, color: isActive ? '#00938e' : '#9ca3af' }}><Icon /></span>
       {!collapsed && <span>{label}</span>}
     </button>
   )
 }
 
-// ─── Sidebar ──────────────────────────────────────────────────────────────────
 export default function Sidebar({ onCollapse }) {
   const [collapsed, setCollapsed] = useState(false)
-  const navigate        = useNavigate()
-  const location        = useLocation()
+  const navigate         = useNavigate()
+  const location         = useLocation()
   const { logout, user } = useAuth()
 
   const isSurgeon = user?.role === 'surgeon'
   const navItems  = isSurgeon ? surgeonNav : serviceNav
 
-  useEffect(() => {
-    onCollapse?.(collapsed)
-  }, [collapsed])
+  useEffect(() => { onCollapse?.(collapsed) }, [collapsed])
 
   const handleLogout = () => { logout(); navigate('/login') }
 
@@ -136,15 +108,13 @@ export default function Sidebar({ onCollapse }) {
       transition: 'width 0.3s ease', overflow: 'hidden',
     }}>
 
-      {/* ── Logo + collapse toggle ── */}
+      {/* Logo + collapse */}
       <div style={{
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-        padding: '16px 14px', borderBottom: '1px solid #f3f4f6',
+        padding: '16px 14px', borderBottom: '1px solid #f3f4f6', flexShrink: 0,
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px', minWidth: 0 }}>
-          <div style={{ flexShrink: 0 }}>
-            <LogoMark size={34} />
-          </div>
+          <div style={{ flexShrink: 0 }}><LogoMark size={34} /></div>
           {!collapsed && (
             <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.2 }}>
               <span style={{ fontWeight: 700, fontSize: '0.95rem', color: '#00938e' }}>Merai</span>
@@ -152,12 +122,17 @@ export default function Sidebar({ onCollapse }) {
             </div>
           )}
         </div>
-
+        <button
+          onClick={() => setCollapsed(c => !c)}
+          style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#9ca3af', padding: '4px', marginLeft: collapsed ? 'auto' : 0 }}
+        >
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d={collapsed ? 'M9 5l7 7-7 7' : 'M15 19l-7-7 7-7'} />
+          </svg>
+        </button>
       </div>
 
-
-
-      {/* ── Nav ── */}
+      {/* Nav */}
       <nav style={{ flex: 1, padding: '12px 10px', display: 'flex', flexDirection: 'column', gap: '2px', overflowY: 'auto' }}>
         {navItems.map(item => (
           <NavButton
@@ -170,8 +145,32 @@ export default function Sidebar({ onCollapse }) {
         ))}
       </nav>
 
-      {/* ── Bottom ── */}
-      <div style={{ padding: '0 10px 16px', display: 'flex', flexDirection: 'column', gap: '4px' }}>
+      {/* User + Logout */}
+      <div style={{ padding: '8px 10px 16px', flexShrink: 0, borderTop: '1px solid #f3f4f6' }}>
+        {!collapsed && user && (
+          <div style={{
+            display: 'flex', alignItems: 'center', gap: '8px',
+            padding: '8px 10px', borderRadius: '10px',
+            background: '#f9fafb', marginBottom: '6px',
+          }}>
+            <div style={{
+              width: '30px', height: '30px', borderRadius: '50%',
+              background: '#e6f7f6', color: '#00938e',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              fontSize: '0.68rem', fontWeight: 700, flexShrink: 0,
+            }}>
+              {user.initials}
+            </div>
+            <div style={{ minWidth: 0 }}>
+              <p style={{ fontSize: '0.78rem', fontWeight: 600, color: '#374151', margin: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                {user.name}
+              </p>
+              <p style={{ fontSize: '0.62rem', color: '#9ca3af', margin: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                {user.role === 'surgeon' ? user.hospital : user.email}
+              </p>
+            </div>
+          </div>
+        )}
         <button
           onClick={handleLogout}
           title={collapsed ? 'Logout' : ''}
@@ -190,8 +189,6 @@ export default function Sidebar({ onCollapse }) {
           <span style={{ flexShrink: 0 }}><LogoutIcon /></span>
           {!collapsed && <span>Logout</span>}
         </button>
-
-
       </div>
     </aside>
   )

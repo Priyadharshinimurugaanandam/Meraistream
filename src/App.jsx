@@ -10,6 +10,7 @@ import MyVideosPage     from './components/surgeon/MyVideosPage'
 import ProceduresPage   from './components/surgeon/ProceduresPage'
 import SharedWithMePage from './components/surgeon/SharedWithMePage'
 import VideoDetailPage  from './components/common/VideoDetailPage'
+import CalendarPage     from './components/common/CalendarPage'
 
 const ProtectedRoute = ({ children }) => {
   const { user } = useAuth()
@@ -22,21 +23,17 @@ export default function App() {
 
   return (
     <Routes>
-
-      {/* ── Auth ── */}
       <Route
         path="/login"
         element={user ? <Navigate to="/dashboard" replace /> : <LoginPage />}
       />
 
-      {/* ── Dashboard (role-based) ── */}
       <Route path="/dashboard" element={
         <ProtectedRoute>
           {isServicePerson() ? <ServiceDashboard /> : <SurgeonDashboard />}
         </ProtectedRoute>
       } />
 
-      {/* ── Service routes ── */}
       <Route path="/upload" element={
         <ProtectedRoute><UploadPage /></ProtectedRoute>
       } />
@@ -47,7 +44,6 @@ export default function App() {
         <ProtectedRoute><HospitalPage /></ProtectedRoute>
       } />
 
-      {/* ── Surgeon routes ── */}
       <Route path="/my-videos" element={
         <ProtectedRoute><MyVideosPage /></ProtectedRoute>
       } />
@@ -58,14 +54,15 @@ export default function App() {
         <ProtectedRoute><SharedWithMePage /></ProtectedRoute>
       } />
 
-      {/* ── Shared routes ── */}
       <Route path="/video/:id" element={
         <ProtectedRoute><VideoDetailPage /></ProtectedRoute>
       } />
 
-      {/* ── Fallback ── */}
-      <Route path="*" element={<Navigate to={user ? '/dashboard' : '/login'} replace />} />
+      <Route path="/calendar" element={
+        <ProtectedRoute><CalendarPage /></ProtectedRoute>
+      } />
 
+      <Route path="*" element={<Navigate to={user ? '/dashboard' : '/login'} replace />} />
     </Routes>
   )
 }

@@ -475,37 +475,7 @@ export default function CalendarPage() {
               </button>
             </div>
 
-            {/* Right controls */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-              {/* Surgeon filter — service only */}
-              {isService && (
-                <select
-                  value={filterSurgeon}
-                  onChange={e => setFilterSurgeon(e.target.value)}
-                  style={{
-                    padding: '7px 10px', borderRadius: '8px',
-                    border: '1px solid #e5e7eb', background: 'white',
-                    fontSize: '0.8rem', color: '#374151', cursor: 'pointer',
-                  }}
-                >
-                  <option value="all">All Surgeons</option>
-                  {surgeonList.map(s => <option key={s.id} value={s.id}>{s.name}</option>)}
-                </select>
-              )}
 
-              <button
-                onClick={() => { setSelectedDate(selectedDate || dateStr(year, month, TODAY.getDate())); setShowModal(true) }}
-                style={{
-                  display: 'flex', alignItems: 'center', gap: '6px',
-                  padding: '8px 16px', borderRadius: '10px', border: 'none',
-                  background: 'linear-gradient(135deg, #00938e, #007a76)',
-                  color: 'white', fontSize: '0.84rem', fontWeight: 600,
-                  cursor: 'pointer', boxShadow: '0 2px 10px rgba(0,147,142,0.25)',
-                }}
-              >
-                <PlusIcon /> Add Event
-              </button>
-            </div>
           </div>
 
           {/* ── Legend ── */}
